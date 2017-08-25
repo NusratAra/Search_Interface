@@ -1,19 +1,25 @@
 import React from 'react';
-import api from './api.js';
+import Data from './Data.js';
 import SearchResult from './SearchResult';
 
-const MATCHING_ITEM_LIMIT = 25;
+const MATCHING_ITEM_LIMIT = 9;
+
 class Search extends React.Component {
-  state = {
-      products: [],
-      searchValue: ""
-    };
+
+
+  constructor(props) {
+      super(props);
+      this.state = {
+        value: '',
+        products: []
+      };
+  }
 
     handleSearchChange = e => {
       const value = e.target.value;
 
       this.setState({
-        searchValue: value
+        value: value
       });
 
       if (value === "") {
@@ -23,9 +29,9 @@ class Search extends React.Component {
       } else {
 
 
-        api.search(value, products => {
+        Data.search(value, products => {
           this.setState({
-            products: products.slice(0, MATCHING_ITEM_LIMIT)
+            products: products.hits.hits.slice(0, MATCHING_ITEM_LIMIT)
           });
         });
       }
@@ -37,10 +43,8 @@ class Search extends React.Component {
     return (
       <div>
         <input type="text" required placeholder="Search"
-        value={this.state.searchValue}
+        value={this.state.value}
         onChange={this.handleSearchChange}/>
-        <button type="submit"
-        onClick={this.props.handleSearchChange}>Search</button>
         <SearchResult products={this.state.products}/>
       </div>
 

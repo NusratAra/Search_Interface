@@ -1,7 +1,7 @@
 import React from 'react';
 import Cart from './Components/Cart.js';
 import Search from './Components/Search.js';
-import api from './Components/api.js';
+import Data from './Components/Data.js';
 
 class App extends React.Component {
 

@@ -2,11 +2,11 @@
   "name": "search-interface",
   "version": "0.1.0",
   "private": true,
+   "proxy": "http://es.backpackbang.com:9200",
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.11",
-    "proxy": "http://es.backpackbang.com:9200/products/amazon/_search?q=title:backpack"
+    "react-scripts": "1.0.11"
   },
   "scripts": {
     "start": "react-scripts start",

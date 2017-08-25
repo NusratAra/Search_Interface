@@ -25,6 +25,7 @@ addCart(item, key) {
     const productList = this.props.products.map(product => (
       <li>
         {product._source.title}
+        {product._source.description}
         {product._source.price}
         </li>
     ));
@@ -34,6 +35,7 @@ addCart(item, key) {
       <div>
 
         <ul>
+
         {this.props.productList}
 
         </ul>
