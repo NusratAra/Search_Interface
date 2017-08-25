@@ -147,6 +147,8 @@ sub {
 }
 img {
   border: 0;
+  width: 150px;
+  height: 150px;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -523,7 +525,6 @@ ul.order li span.count span {
 .menu-fish img {
   float: left;
   width: 150px;
-  margin-right: 1rem;
 }
 button,
 input[type=submit] {

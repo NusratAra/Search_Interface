@@ -26,9 +26,11 @@ addCart(item, key) {
   render() {
     const productList = this.props.products.map((products, index) => (
       <li key={index}>
-        <h5 >{products._source.title}</h5>
-        <p >${products._source.price}</p>
-        <button key={index} onClick={() => this.addCart(products, products._source.title)}>Add to cart</button>
+      <h5 >{products._source.title}</h5>
+      <p>${products._source.price}</p>
+      <img className="menu-fish"
+      src={products._source.images} alt={products._source.title} />
+        <button key={index} onClick={() => this.addCart(products, products._source.title)}> + Cart</button>
       </li>
     ));
 
