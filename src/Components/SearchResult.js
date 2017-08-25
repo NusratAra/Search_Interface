@@ -16,18 +16,20 @@ class SearchResult extends React.Component {
 addCart(item, key) {
     const itemList = {...this.state.itemList};
     const cartList = {...this.state.cartList};
+    cartList[key] = cartList[key] + 1 || 1;
+    itemList[key] = itemList;
     this.setState({ cartList });
     this.setState({ itemList });
 }
 
 
   render() {
-    const productList = this.props.products.map(product => (
-      <li>
-        {product._source.title}
-        {product._source.description}
-        {product._source.price}
-        </li>
+    const productList = this.props.products.map((products, index) => (
+      <li key={index}>
+        <h5 >{products._source.title}</h5>
+        <p >${products._source.price}</p>
+        <button key={index} onClick={() => this.addCart(products, products._source.title)}>Add to cart</button>
+      </li>
     ));
 
 
@@ -35,9 +37,7 @@ addCart(item, key) {
       <div>
 
         <ul>
-
-        {this.props.productList}
-
+        {productList}
         </ul>
       </div>
     );

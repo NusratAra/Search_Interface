@@ -1,11 +1,11 @@
 import React from 'react';
+import SearchResult from './SearchResult.js';
 
 class Cart extends React.Component {
   render() {
     return (
       <div>
         <p>Cart</p>
-        <button type="submit">Clear cart</button>
       </div>
     );
   }
