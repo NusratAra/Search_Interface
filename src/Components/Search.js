@@ -11,7 +11,6 @@ class Search extends React.Component {
       super(props);
       this.state = {
         value: '',
-        products: []
       };
   }
 
@@ -23,16 +22,11 @@ class Search extends React.Component {
       });
 
       if (value === "") {
-        this.setState({
-          products: []
-        });
+	      this.props.onSearchFinished([]);
       } else {
 
-
         Data.search(value, products => {
-          this.setState({
-            products: products.hits.hits.slice(0, MATCHING_ITEM_LIMIT)
-          });
+          this.props.onSearchFinished(products.hits.hits.slice(0, MATCHING_ITEM_LIMIT))
         });
       }
     };
@@ -45,7 +39,6 @@ class Search extends React.Component {
         <input type="text" required placeholder="Search"
         value={this.state.value}
         onChange={this.handleSearchChange}/>
-        <SearchResult products={this.state.products}/>
       </div>
 
     );
