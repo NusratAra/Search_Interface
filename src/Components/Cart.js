@@ -1,5 +1,8 @@
 import React from 'react';
+import '../css/style.css';
 import SearchResult from './SearchResult.js';
+
+
 
 class Cart extends React.Component {
 	constructor() {
@@ -18,6 +21,7 @@ class Cart extends React.Component {
 		);
 	}
 
+
 	render() {
 		// const cartID = Object.keys(this.props.cartList);
 		// const total = cartID.reduce((prevTotal, key) => {
@@ -30,17 +34,33 @@ class Cart extends React.Component {
 		//   return prevTotal;
 		// }, 0);
 
+    //<button onClick={() => this.props.cart.items.clearCart()}>Clear cart</button>
+
 		const {cart: {items, total}} = this.props;
+    if(this.props.cart.total == 0)
+    return (
+      <div>
+				<h2>Cart</h2>
+
+    				<h3>You have no item in your cart</h3>
+
+
+        </div>
+		);
 
 		return (
-			<div className="cart">
-				<p>Cart</p>
-				<ul>
+
+			<div className="order-wrap">
+				<h2>Cart</h2>
+				<ul className="order">
 					{items.map(this.renderCart)}
 				</ul>
 
 				<hr/>
-				<p><strong>Total: {total}</strong></p>
+        <li className="total">
+          <strong>Total:{total}</strong>
+
+        </li>
 			</div>
 		);
 	}

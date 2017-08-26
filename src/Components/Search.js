@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/style.css';
 import Data from './Data.js';
 import SearchResult from './SearchResult';
 

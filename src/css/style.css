@@ -6,6 +6,89 @@ n.order-enter {
   max-height: 0;
   padding: 0 !important;
 }
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+
+  /* Then we define the flow direction and if we allow the items to wrap
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-wrap: wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: center;
+}
+.item{
+  background: #ddd;
+  height: 250px;
+  width: 250px;
+  list-style: none;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.product-box-holders {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 90vh;
+  max-width: 1500px;
+  margin-top: 7px;
+  margin-left: 0px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.product-box-holders > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 4 auto;
+          flex: 1 4 auto;
+  padding: 2rem;
+  border: 1rem double #1a1a1a;
+  position: relative;
+  background: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.1);
+  overflow: scroll;
+}
+.product-box-holders > *:first-child {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  -webkit-transform: translateX(50%) rotateY(6deg) translateX(-50%);
+          transform: translateX(50%) rotateY(6deg) translateX(-50%);
+  min-width: 500px;
+  max-width: 1000px;
+  height: 90vh;
+}
+.product-box-holders > *:nth-child(2) {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  -webkit-transform: translateX(50%) rotateY(6deg) translateX(-50%);
+          transform: translateX(50%) rotateY(6deg) translateX(-50%);
+
+  margin-top: 22px;
+  min-width: 200px;
+  max-width: 305px;
+  height: 83vh;
+}
+.product-box-holders > *:last-child {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  -webkit-transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
+          transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
+}
+
 .order-enter.order-enter-active {
   -webkit-transform: translateX(0);
           transform: translateX(0);
@@ -146,9 +229,10 @@ sub {
   bottom: -0.25em;
 }
 img {
+  position: center;
   border: 0;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 180px;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -245,15 +329,18 @@ h4,
 h5,
 h6 {
   font-weight: normal;
-  font-family: 'haymakerregular', sans-serif;
 }
+
 h2 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 2rem;
 }
 h3 {
+  color: #808080;
   font-size: 3rem;
+  text-align: center;
+  margin-top: 200px;
 }
 header.top {
   text-align: center;
@@ -390,10 +477,26 @@ input#fold:checked + label {
   background: #fff;
   color: #000;
 }
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+
+}
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+
 }
 ul.order li {
   border-bottom: 1px solid #000;
@@ -492,8 +595,6 @@ ul.order li span.count span {
           transform: translateZ(0);
 }
 .menu-fish {
-  border-bottom: 2px solid #000;
-  border-top: 1px solid #000;
   padding-bottom: 2rem;
   padding-top: 2rem;
   margin-bottom: 5px;
@@ -523,8 +624,10 @@ ul.order li span.count span {
           justify-content: flex-end;
 }
 .menu-fish img {
-  float: left;
+  float: none;
+  border: 0;
   width: 150px;
+  height: 150px;
 }
 button,
 input[type=submit] {

@@ -1,14 +1,17 @@
 import React from 'react';
+import './css/style.css';
 import Cart from './Components/Cart.js';
 import Search from './Components/Search.js';
 import Data from './Components/Data.js';
 import SearchResult from './Components/SearchResult.js';
+
 
 class App extends React.Component {
 	constructor() {
 		super();
 		this.addToCart = this.addToCart.bind(this);
 		this.onSearchFinished = this.onSearchFinished.bind(this);
+    this.clearCart = this.clearCart.bind(this);
 		// getinitialState
 		this.state = {
 			cart: {
@@ -56,6 +59,16 @@ class App extends React.Component {
 		console.log(newCart);
 		this.setState({cart : newCart});
 	}
+  clearCart(){
+    const {cart} = this.state;
+    this.state = {
+			cart: {
+				items: [],
+				total: 0
+			},
+			products: [],
+		};
+  }
 
 
 	onSearchFinished(products) {
@@ -67,7 +80,25 @@ class App extends React.Component {
 
 	render() {
 		const {products, cart} = this.state;
+    if(this.state.products == 0)
 		return (
+      <div className="catch-of-the-day">
+				<div className="menu">
+					<Search
+						onSearchFinished={this.onSearchFinished}/>
+
+    				<h3>What will you buy today </h3>
+
+
+        </div>
+        <Cart cart={cart}/>
+			</div>
+
+		);
+
+
+
+    return (
 			<div className="catch-of-the-day">
 				<div className="menu">
 					<Search
@@ -78,7 +109,7 @@ class App extends React.Component {
 					<SearchResult product={product} addToCart={this.addToCart}/>
 				))}
 				</ul>
-</div>
+        </div>
 				<Cart cart={cart}/>
 			</div>
 		);
